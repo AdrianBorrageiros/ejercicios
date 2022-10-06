@@ -30,7 +30,7 @@
             // mysqli_close($db);
         ?>
         <h3>Comentarios:</h3>
-        <?php
+        <?php 
             $query2 = 'SELECT * FROM tComentarios WHERE pelicula_id='.$_GET['id'];
             $row2 = mysqli_query($db, $query2) or die('Query error');
             while ($row = mysqli_fetch_array($row2)) {
@@ -42,7 +42,7 @@
         <h3>Deja un nuevo comentario:</h3>
         <form action="/comment.php" method="post">
             <textarea rows="4" cols="50" name="new_comment"></textarea><br>
-            <input type="hidden" name="cancion_id" value="<?php echo $_GET['id']; ?>">
+            <input type="hidden" name="pelicula_id" value="<?php echo $_GET['id']; ?>">
             <input type="submit" value="Comentar">
         </form>
         </center>
