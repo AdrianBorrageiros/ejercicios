@@ -1,0 +1,43 @@
+<!-- DATA BASE -->
+<?php
+    $db = mysqli_connect('localhost', 'root', '1234', 'mysitedb') or die('Fail');
+?>
+
+<!-- HTML -->
+<html>
+    <style>
+        img {
+            height: 150px;
+            width: 120px;
+        }
+    </style>
+    <head><meta charset="utf-8"></head>
+    <body>
+        <center>
+        <?php
+            // Lanzar query con GET ID
+            $query = 'SELECT * FROM tPeliculas where id ='.$_GET['id'];
+            $result = mysqli_query($db, $query) or die('Query error');
+            $row = mysqli_fetch_array($result);
+            // Recorrer el resultado
+            echo '<img src='.$row['url_imagen'].'>';
+            echo '<h1>'.$row['nombre'].'</h1>';
+            echo '<p>Director: '.$row['director'].'</p>';
+            echo 'Puntuación: <h2>'.$row['puntuacion'].'</h2>';
+            echo '<br>'
+
+            // Cerrar conexión
+            // mysqli_close($db);
+        ?>
+        <h3>Comentarios:</h3>
+        <?php
+            $query2 = 'SELECT * FROM tComentarios WHERE pelicula_id='.$_GET['id'];
+            $row2 = mysqli_query($db, $query2) or die('Query error');
+            while ($row = mysqli_fetch_array($row2)) {
+            echo '<p>●'.$row['comentario'].'</p>';
+            }
+            mysqli_close($db);
+        ?>
+        </center>
+    </body>
+</html>
