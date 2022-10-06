@@ -25,16 +25,13 @@
             echo '<p>Director: '.$row['director'].'</p>';
             echo 'Puntuación: <h2>'.$row['puntuacion'].'</h2>';
             echo '<br>'
-
-            // Cerrar conexión
-            // mysqli_close($db);
         ?>
         <h3>Comentarios:</h3>
         <?php 
             $query2 = 'SELECT * FROM tComentarios WHERE pelicula_id='.$_GET['id'];
             $row2 = mysqli_query($db, $query2) or die('Query error');
             while ($row = mysqli_fetch_array($row2)) {
-            echo '<p>●'.$row['comentario'].'</p>';
+            echo '<p>●'.$row['comentario'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.date("d.m.y").'</p>'; // escribimos el comentario y la fecha del mismo con espaciados de por medio
             }
             mysqli_close($db);
         ?>
