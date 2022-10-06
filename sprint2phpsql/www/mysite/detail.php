@@ -38,6 +38,13 @@
             }
             mysqli_close($db);
         ?>
+        <!-- FORMULARIO COMENTARIO -->
+        <h3>Deja un nuevo comentario:</h3>
+        <form action="/comment.php" method="post">
+            <textarea rows="4" cols="50" name="new_comment"></textarea><br>
+            <input type="hidden" name="cancion_id" value="<?php echo $_GET['id']; ?>">
+            <input type="submit" value="Comentar">
+        </form>
         </center>
     </body>
 </html>
