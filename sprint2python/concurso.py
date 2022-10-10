@@ -1,3 +1,4 @@
+import random
 op = ''
 punt = 0
 
@@ -33,9 +34,23 @@ def preguntar(pregunta, res1, res2, res3, respuestaCorrecta):
                 return
 
 # PREGUNTAS
-preguntar("Cuántos corazones tiene un pulpo?", "1", "2", "3", "3")
-preguntar("Dónde se encuentra la Sagrada Familia?", "Barcelona", "Madrid", "Logroño", "Barcelona")
-preguntar("Cuál es el océano más grande del mundo?", "Pacífico", "Mediterráneo", "Atlántico", "Pacífico")
+preguntaHecha = 0
+pregunta = 0
+    # un FOR para hacer un total de 2 preguntas
+for i in range(1,3):
+    while (preguntaHecha == pregunta):
+        pregunta = random.randint(1, 3)
+
+    if (pregunta == 1 and preguntaHecha != 1):
+        preguntar("Cuántos corazones tiene un pulpo?", "1", "2", "3", "3")
+        preguntaHecha = 1
+    elif (pregunta == 2 and preguntaHecha != 2):
+        preguntar("Dónde se encuentra la Sagrada Familia?", "Barcelona", "Madrid", "Logroño", "Barcelona")
+        preguntaHecha = 2
+    elif (pregunta == 3 and preguntaHecha != 3):
+        preguntar("Cuál es el océano más grande del mundo?", "Pacífico", "Mediterráneo", "Atlántico", "Pacífico")
+        preguntaHecha = 3
+        
 print()
 print()
 print("Tu puntuación total es de: ",punt)
