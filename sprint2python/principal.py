@@ -1,7 +1,21 @@
 from factorial import func_factorial as factorial
 from factorial2 import func_factorial2 as factorial2
-print("Introduce un número:  (func_factorial)")
-print( factorial(int(input())) )
+
+
+op = ''
+while (op!='a' and op!='b'):
+    print("A) func_factorial")
+    print("B) func_factorial2")
+    op = input()
+    if (op!='a' and op!='b'):
+        print("RESPUESTAS VÁLIDAS A / B")
+
 print()
-print("Introduce un número:  (func_factorial2)")
-print( factorial2(int(input())) )
+
+if (op=='a'):
+    print("Introduce un número:  ")
+    print( factorial(int(input())) )
+else:
+    print("Introduce un número:  ")
+    print( factorial2(int(input())) )
+
