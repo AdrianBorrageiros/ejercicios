@@ -1,11 +1,17 @@
+# IMPORTS NECESARIOS
 import random
+
+# VARIABLES GLOBALES
 op = ''
 punt = 0
 
+# FUNCION REALIZAR PREGUNTA
 def preguntar(pregunta, res1, res2, res3, respuestaCorrecta):
+    # MANEJAR VARIABLES GLOBALES YA CREADAS
     global punt, op
+    
+    # CONTROLAR OPCIONES ÚNICAS / CORRECTO-INCORRECTO
     while (op!='a' and op!='b' and op!='c'):
-        #  pregunta con opciones
         print(pregunta)
         print("A) "+res1)
         print("B) "+res2)
@@ -23,7 +29,7 @@ def preguntar(pregunta, res1, res2, res3, respuestaCorrecta):
             print("RESPUESTAS VÁLIDAS A, B o C")
         
         # correcto o incorrecto
-        if (op==res1 or op==res2 or op==res3):
+        if (op==res1 or op==res2 or op==res3): # controlar que es una de las respuestas válidas, si no daría siempre falso cuando no se insertan A, B o C
             if (op == respuestaCorrecta):
                 print("CORRECTO!    /   +10 puntos")
                 punt += 10
@@ -33,14 +39,18 @@ def preguntar(pregunta, res1, res2, res3, respuestaCorrecta):
                 punt -= 5
                 return
 
-# PREGUNTAS
+# REALIZAR PREGUNTAS
 preguntaHecha = 0
 pregunta = 0
+
     # un FOR para hacer un total de 2 preguntas
 for i in range(1,3):
+
+    # no repetir una pregunta ya hecha
     while (preguntaHecha == pregunta):
         pregunta = random.randint(1, 3)
 
+    # pregunta según número aleatorio
     if (pregunta == 1 and preguntaHecha != 1):
         preguntar("Cuántos corazones tiene un pulpo?", "1", "2", "3", "3")
         preguntaHecha = 1

@@ -3,6 +3,7 @@ from factorial2 import func_factorial2 as factorial2
 import time
 
 op = ''
+# controlar que las opciones sólo puedan ser A o B
 while (op!='a' and op!='b'):
     print("A) func_factorial")
     print("B) func_factorial2")
@@ -12,6 +13,7 @@ while (op!='a' and op!='b'):
 
 print()
 
+# ejecutar funcion según opción
 if (op=='a'):
     print("Introduce un número:  ")
     start_time = time.time()
