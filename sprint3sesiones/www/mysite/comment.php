@@ -5,7 +5,12 @@ $db = mysqli_connect('localhost', 'root', '1234', 'mysitedb') or die('Fail');
     <body>
         <center>
         <?php
-            $query = "INSERT INTO tComentarios VALUES (0,'".$_POST['new_comment']."',NULL,'".$_POST['pelicula_id']."','".date("Y.m.d")."')";
+            session_start();
+            $user_id_a_insertar = 'NULL';
+            if (!empty($_SESSION['user_id'])) {
+                $user_id_a_insertar = $_SESSION['user_id'];
+            };
+            $query = "INSERT INTO tComentarios VALUES (0,'".$_POST['new_comment']."','".$user_id_a_insertar."','".$_POST['pelicula_id']."','".date("Y.m.d")."')";
             mysqli_query($db, $query) or die('Error');
             echo "<p>Nuevo comentario ";
             echo mysqli_insert_id($db);
