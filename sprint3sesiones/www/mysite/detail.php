@@ -13,6 +13,7 @@
     </style>
     <head><meta charset="utf-8"></head>
     <body>
+        <a href="/logout.php">DESCONECTARSE</a>
         <center>
         <?php
             // Lanzar query con GET ID
