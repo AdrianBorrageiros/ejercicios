@@ -24,6 +24,9 @@
             width: 100%;
             border: 1px solid black;
         }
+        table a:hover{
+            font-size: xxx-large;
+        }
     </style>
     <head><meta charset="utf-8"></head>
     <body>
