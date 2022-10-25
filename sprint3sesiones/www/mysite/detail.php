@@ -13,14 +13,21 @@
     </style>
     <head><meta charset="utf-8"></head>
     <body>
-        <a href="/logout.php">DESCONECTARSE</a>
-        <center>
         <?php
+            // COMPROBAR SI ESTÁ LA SESIÓN INICIADA
+            session_start();
+            if ($_SESSION['user_id']){
+                echo "<a href='/logout.php'>DESCONECTARSE</a><br>";
+                echo "<a href='/changePWD.php'>CAMBIAR CONTRASEÑA</a>";
+            } else{
+                echo "<a href='/login.html'>CONECTARSE</a><br>";
+            }
             // Lanzar query con GET ID
             $query = 'SELECT * FROM tPeliculas where id ='.$_GET['id'];
             $result = mysqli_query($db, $query) or die('Query error');
             $row = mysqli_fetch_array($result);
             // Recorrer el resultado
+            echo "<center>";
             echo '<img src='.$row['url_imagen'].'>';
             echo '<h1>'.$row['nombre'].'</h1>';
             echo '<p>Director: '.$row['director'].'</p>';
@@ -29,10 +36,12 @@
         ?>
         <h3>Comentarios:</h3>
         <?php 
-            $query2 = 'SELECT * FROM tComentarios WHERE pelicula_id='.$_GET['id'];
+            // QUERY PARA COMENTARIO
+            $query2 = 'SELECT tUsuarios.nombre, tComentarios.comentario, tComentarios.fecha_comentario from tComentarios INNER JOIN tUsuarios ON tComentarios.usuario_id=tUsuarios.id WHERE pelicula_id='.$_GET['id'];
             $row2 = mysqli_query($db, $query2) or die('Query error');
+
             while ($row = mysqli_fetch_array($row2)) {
-            echo '<p>●'.$row['comentario'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$row['fecha_comentario'].'</p>'; // escribimos el comentario y la fecha del mismo con espaciados de por medio
+                echo '<p>●'.$row['nombre'].':&nbsp;&nbsp;&nbsp;'.$row['comentario'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.$row['fecha_comentario'].'</p>'; // escribimos el comentario y la fecha del mismo con espaciados de por medio
             }
             mysqli_close($db);
         ?>
