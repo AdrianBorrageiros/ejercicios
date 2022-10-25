@@ -31,7 +31,6 @@
     </style>
     <head><meta charset="utf-8"></head>
     <body>
-<<<<<<< HEAD
         <?php
             session_start();
             if ($_SESSION['user_id']){
@@ -41,11 +40,6 @@
                 echo "<a href='/login.html'>CONECTARSE</a><br>";
             }
         ?>
-=======
-        <a href="/login.html">CONECTARSE</a><br>
-        <a href="/logout.php">DESCONECTARSE</a><br>
-        <a href="/changePWD.php">CAMBIAR CONTRASEÑA</a>
->>>>>>> ed26d9b8fbbff5521bc2ae5d58cfa0c9da1c7ccd
         <!-- <h1>Conexion establecida</h1> -->
         <table>
             <tr>
