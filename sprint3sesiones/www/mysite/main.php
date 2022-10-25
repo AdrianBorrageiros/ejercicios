@@ -8,6 +8,7 @@
     <style>
         a{
             text-decoration: none;
+            font-size: 25px;
         }
         img {
             height: 110px;
@@ -30,9 +31,15 @@
     </style>
     <head><meta charset="utf-8"></head>
     <body>
-        <a href="/login.html">CONECTARSE</a><br>
-        <a href="/logout.php">DESCONECTARSE</a><br>
-        <a href="/changePWD.php">CAMBIAR CONTRASEÑA</a>
+        <?php
+            session_start();
+            if ($_SESSION['user_id']){
+                echo "<a href='/logout.php'>DESCONECTARSE</a><br>";
+                echo "<a href='/changePWD.php'>CAMBIAR CONTRASEÑA</a>";
+            } else{
+                echo "<a href='/login.html'>CONECTARSE</a><br>";
+            }
+        ?>
         <!-- <h1>Conexion establecida</h1> -->
         <table>
             <tr>
