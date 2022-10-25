@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <?php
+            $db = mysqli_connect('localhost', 'root', '1234', 'mysitedb') or die('Fail');
+            session_start();
+            echo "<script>console.log(".$_SESSION['user_id'].");</script>";
+            $query = "SELECT contrasena FROM tUsuarios WHERE id = '".$_SESSION['user_id']."'";
+            $result = mysqli_query($db, $query) or die('Query error');
+
+            if (mysqli_num_rows($result) > 0) {
+                echo 'AQUI IRIA EL CODIGO';
+            }else {
+                echo '<p>No has iniciado sesión</p>';
+                echo '<a href="/login.html">INICIAR SESIÓN</a>';
+            }
+        ?>
+    </body>
+</html>

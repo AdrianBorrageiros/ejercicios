@@ -30,7 +30,9 @@
     </style>
     <head><meta charset="utf-8"></head>
     <body>
-        <a href="/logout.php">DESCONECTARSE</a>
+        <a href="/login.html">CONECTARSE</a><br>
+        <a href="/logout.php">DESCONECTARSE</a><br>
+        <a href="/changePWD.php">CAMBIAR CONTRASEÑA</a>
         <!-- <h1>Conexion establecida</h1> -->
         <table>
             <tr>
