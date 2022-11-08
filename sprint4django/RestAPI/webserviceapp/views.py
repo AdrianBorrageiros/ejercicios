@@ -19,3 +19,21 @@ def devolver_peliculas(request):
         diccionario['puntuacion'] = fila_sql.puntuacion
         respuesta_final.append(diccionario)
     return JsonResponse(respuesta_final, safe=False)
+
+def devolver_pelicula_por_id(request, id_solicitado):
+    pelicula = Tpeliculas.objects.get(id = id_solicitado)
+    comentarios = pelicula.tcomentarios_set.all()
+    lista_comentarios = []
+    for fila_comentario_sql in comentarios:
+        diccionario = {}
+        diccionario['id'] = fila_comentario_sql.id
+        diccionario['comentario'] = fila_comentario_sql.comentario
+        lista_comentarios.append(diccionario)
+    resultado = {
+        'id': pelicula.id,
+        'nombre': pelicula.nombre,
+        'url_imagen': pelicula.url_imagen,
+        'director': pelicula.director,
+        'puntuacion': pelicula.puntuacion,
+    }
+    return JsonResponse(resultado, json_dumps_params={'ensure_ascii':False})
