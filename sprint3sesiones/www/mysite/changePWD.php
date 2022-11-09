@@ -4,7 +4,7 @@
     </head>
     <body>
         <?php
-            $db = mysqli_connect('localhost', 'root', '1234', 'mysitedb') or die('Fail');
+            $db = mysqli_connect('172.16.0.2', 'root', '1234', 'mysitedb') or die('Fail');
             session_start();
             $query = "SELECT contrasena FROM tUsuarios WHERE id = '".$_SESSION['user_id']."'";
             $result = mysqli_query($db, $query) or die('Query error');
